@@ -33,7 +33,7 @@ Read NFC sensor UID data.
 Read all data on NFC data block.
 
 ### 5.readDataNByte
-![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+![image](https://github.com/Arya11111/pxt-NFCI2C/blob/master/image/readDataNBytes.png)<br>
 Read NFC data specifying N bytes.
 
 
