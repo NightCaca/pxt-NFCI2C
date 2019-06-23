@@ -51,6 +51,9 @@ Write data to the first few bytes of the NFC data block
 ### 9.nfcDataList
 ![image](https://github.com/Arya11111/pxt-NFCI2C/blob/master/image/nfcDataList.png)<br>
 
+## Example
+get code: ```https://github.com/Arya11111/pxt-NFCI2C/blob/master/test.ts```
+
 ## License
 
 MIT
