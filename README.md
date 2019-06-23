@@ -1,47 +1,56 @@
-# MBT0013 micronatural & science 
+# PN532 I2C
 
-IOT Natural and Scientific Expansion Board
----------------------------------------------------------
+## Micro:bit NFC Sensor expansion board.
 
 ## Table of Contents
 
 * [URL](#url)
 * [Summary](#summary)
 * [Blocks](#blocks)
-* [Example](#example)
 * [License](#license)
 
 ## URL
 project URL: ```https://github.com/Arya11111/pxt-NaturalScience```
 
 ## Summary
-This is a microbit-based theme expansion board. The theme is natural science. Through the vivid logo and interesting theme features, the expansion board becomes a knowledgeable and interesting multimedia teaching tool. In the teaching process, it is very easy to transition from the natural environment knowledge point to the knowledge detection, program programming and other knowledge points.
-Expansion board configuration: atmospheric pressure, temperature, humidity, color, sound, light, water quality, OLED screen as data display, using makecode graphical programming.
-
+NFC Sensor expansion board provides some Micro:bit blocks for reading and interpreting PN532 NFC RFID Module over I2C. These blocks make it easy to operate or acquiring imformation from the card via NFC sensors.Near field communication (NFC) is a set of standards for smart phones and similar devices to establish radio communicationwith each other by touching them together or bringing them into close proximity, usually no more than a few centimeter.
 ## Blocks
 
-### block
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/MBT0013_blok1.png)
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/MBT0013_block2.png)
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/MBT0013_block3.png)
+## Blocks
+### 1.checkCard
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Whether a card is detected by NFC.
+
+### 2.checkUid
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Whether UID data of card is detected.
+
+### 3.getUid
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Read NFC sensor UID data.
+
+### 4.readDataBlock
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Read all data on NFC data block.
+
+### 5.readDataNByte
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Read NFC data specifying N bytes.
 
 
-## Example
+### 6.readDataByte
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Read NFC data specifying one byte.
 
-### TDS Detection
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/TDS.png)
-### Temperature, Humidity, Atmospheric Pressure
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/BME280.png)
-### Water temperature,UV,Sound,Light
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/params.png)
-### RGB LED
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/TCS.png)
-### Set LED
-![image](https://github.com/Arya11111/pxt-NaturalScience/blob/master/image/LED.png)
+### 7.writeData
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcEvent.png)<br>
+Write data to the first few bytes of the NFC data block
 
-get code: ```https://github.com/Arya11111/pxt-NaturalScience/blob/master/test.ts```
+### 8.blockList
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/blockList.png)<br>
 
-Get the iot of things platform: [East IoT](http://iot.dfrobot.com.cn/).
+### 9.nfcDataList
+![image](https://github.com/DFRobot/pxt-NFCUART/blob/master/image/nfcDataList.png)<br>
 
 ## License
 
