@@ -161,8 +161,8 @@ namespace NFC {
         basic.pause(100);
         recvBuf = pins.i2cReadBuffer(NFC_I2C_ADDR, len - 4);
     }
-  
-   function wakeup() {
+
+    function wakeup() {
         basic.pause(100);
         let i = 0;
         let buf: number[] = [];
@@ -267,14 +267,6 @@ namespace NFC {
         if ((recvBuf[6] === 0xD5) && (recvBuf[7] === 0x41) && (recvBuf[8] === 0x00) && (checkDcs(15 - 4))) {
             return true;
         }
-        serial.writeNumber(recvBuf[6]);
-        serial.writeLine("");
-        serial.writeNumber(recvBuf[7]);
-        serial.writeLine("");
-        serial.writeNumber(recvBuf[8]);
-        serial.writeLine("");
-        serial.writeLine("");
-        serial.writeLine("ERROR!");
         return false;
     }
 
@@ -315,13 +307,9 @@ namespace NFC {
     //% weight=9
     //% block="Detect Card"
     export function checkCard(): boolean {
-        while (NFC_ENABLE === 0) {
+        if (NFC_ENABLE === 0) {
             wakeup();
-            serial.writeNumber(NFC_ENABLE);
-            serial.writeLine("");
-            serial.writeLine("Wakeup failed!");
         }
-        serial.writeLine("EXIT");
         let buf: number[] = [];
         buf = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x4A, 0x01, 0x00, 0xE1, 0x00];
         let cmdUid = pins.createBufferFromArray(buf);
@@ -342,11 +330,14 @@ namespace NFC {
         }
         return true;
     }
-    
+
     //% weight=8
     //% block="check nfc id|%id"
     //% id.defl="39324fa2"
     export function checkUid(id: string): boolean {
+        if (NFC_ENABLE === 0) {
+            wakeup();
+        }
         if (getUid() === id) {
             return true;
         }
@@ -356,11 +347,8 @@ namespace NFC {
     //% weight=7
     //% block="get nfc id"
     export function getUid(): string {
-        while (NFC_ENABLE === 0) {
+        if (NFC_ENABLE === 0) {
             wakeup();
-            serial.writeNumber(NFC_ENABLE);
-            serial.writeLine("");
-            serial.writeLine("Wakeup failed!");
         }
         if (!checkCard()) {
             return "No NFC Card!";
@@ -377,7 +365,10 @@ namespace NFC {
     //% block="read nfc data block|%block=block_nfc_list"
     //% block.defl=1
     export function readDataBlock(block: number): string {
-        if (!checkCard()) {
+        if (NFC_ENABLE === 0) {
+            wakeup();
+        }
+        if (checkCard() === false) {
             return "No NFC Card!";
         }
         if (!passwdCheck(block, uId, passwdBuf)) {
