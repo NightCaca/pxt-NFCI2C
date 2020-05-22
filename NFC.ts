@@ -323,7 +323,7 @@ namespace NFC {
             return false;
         }
         for (let i = 0; i < uId.length; i++) {
-            uId[i] = recvBuf[14 + i];
+            uId[i] = recvBuf[19 + i];
         }
         if (uId[0] === uId[1] && uId[1] === uId[2] && uId[2] === uId[3] && uId[3] === 0xFF) {
             return false;
