@@ -1,3 +1,4 @@
+// tests go here; this will not be compiled when this package is used as an extension.
 // Add your code here
 /**
  * demo1：Whether a card is detected by NFC.

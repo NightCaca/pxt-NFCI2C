@@ -1,8 +1,7 @@
 {
     "name": "NFC",
-    "version": "1.0.0",
-    "description": "",
-    "license": "MIT",
+    "version": "0.0.0",
+    "description": "IIC NFC",
     "dependencies": {
         "core": "*",
         "radio": "*"
@@ -16,5 +15,9 @@
         "test.ts"
     ],
     "public": false,
-    "installedVersion": "workspace:789df45a-19af-42c5-95bf-52cd330ecd08"
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj",
+    "license": "MIT"
 }
