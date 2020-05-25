@@ -339,7 +339,7 @@ namespace NFC {
         for (let i = 0; i < 20; i++) {
             recvBufid += numberToString(recvBuf[i]);
         }
-        //serial.writeLine(recvBufid);
+        serial.writeLine(recvBufid);
 
         let recvAckid = "";
         for (let i = 0; i < 8; i++) {
