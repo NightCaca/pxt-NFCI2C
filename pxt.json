@@ -1,6 +1,6 @@
 {
     "name": "NFC",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "description": "IIC NFC",
     "dependencies": {
         "core": "*",
