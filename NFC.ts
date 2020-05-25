@@ -330,10 +330,16 @@ namespace NFC {
         writeAndReadBuf(cmdUid, 24);
 
         let recvBufid = "";
-        for (let i = 0; i < 24; i++) {
+        for (let i = 0; i < 20; i++) {
             recvBufid += numberToString(recvBuf[i]);
         }
         serial.writeLine(recvBufid);
+
+        let recvAckid = "";
+        for (let i = 0; i < 8; i++) {
+            recvAckid += numberToString(recvAck[i]);
+        }
+        serial.writeLine(recvAckid);
 
         for (let i = 0; i < 4; i++) {
             if (recvAck[1 + i] != ackBuf[i]) {
