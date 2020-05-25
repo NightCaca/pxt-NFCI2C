@@ -272,6 +272,17 @@ namespace NFC {
 
 
     function writeblock(blockN: number, data: Buffer): void {
+    
+        let nfcUid = "";
+        for (let i = 0; i < 4; i++) {
+            nfcUid += numberToString(uId[i]);
+        }
+        let nfcpasswdBuf = "";
+        for (let i = 0; i < 6; i++) {
+            nfcpasswdBuf += numberToString(passwdBuf[i]);
+        }
+        serial.writeLine(nfcUid);
+        serial.writeLine(nfcpasswdBuf);
         if (!passwdCheck(blockN, uId, passwdBuf)) {
             serial.writeLine("Write Error!");
             return;
