@@ -140,12 +140,18 @@ namespace NFC {
     let passwdBuf = pins.createBuffer(6);
     let blockData = pins.createBuffer(16);
     let NFC_ENABLE = 0;
-    ackBuf[0] = 0x00;
+    //ackBuf[0] = 0x00;
+    //ackBuf[1] = 0x00;
+    //ackBuf[2] = 0xFF;
+    //ackBuf[3] = 0x00;
+    //ackBuf[4] = 0xFF;
+    //ackBuf[5] = 0x00;
+    ackBuf[0] = 0x01;
     ackBuf[1] = 0x00;
-    ackBuf[2] = 0xFF;
-    ackBuf[3] = 0x00;
-    ackBuf[4] = 0xFF;
-    ackBuf[5] = 0x00;
+    ackBuf[2] = 0x00;
+    ackBuf[3] = 0xFF;
+    ackBuf[4] = 0x00;
+    ackBuf[5] = 0xFF;
     passwdBuf[0] = 0xFF;
     passwdBuf[1] = 0xFF;
     passwdBuf[2] = 0xFF;
@@ -340,6 +346,12 @@ namespace NFC {
             recvAckid += numberToString(recvAck[i]);
         }
         serial.writeLine(recvAckid);
+
+        let ackBufid = "";
+        for (let i = 0; i < 8; i++) {
+            ackBufid += numberToString(ackBuf[i]);
+        }
+        serial.writeLine(ackBufid);
 
         for (let i = 0; i < 4; i++) {
             if (recvAck[1 + i] != ackBuf[i]) {
