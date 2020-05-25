@@ -339,19 +339,19 @@ namespace NFC {
         for (let i = 0; i < 20; i++) {
             recvBufid += numberToString(recvBuf[i]);
         }
-        serial.writeLine(recvBufid);
+        //serial.writeLine(recvBufid);
 
         let recvAckid = "";
         for (let i = 0; i < 8; i++) {
             recvAckid += numberToString(recvAck[i]);
         }
-        serial.writeLine(recvAckid);
+        //serial.writeLine(recvAckid);
 
         let ackBufid = "";
         for (let i = 0; i < 8; i++) {
             ackBufid += numberToString(ackBuf[i]);
         }
-        serial.writeLine(ackBufid);
+        //serial.writeLine(ackBufid);
 
         for (let i = 0; i < 4; i++) {
             if (recvAck[1 + i] != ackBuf[i]) {
