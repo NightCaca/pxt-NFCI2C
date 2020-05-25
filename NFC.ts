@@ -271,9 +271,13 @@ namespace NFC {
     }
 
     function writeblock(blockN: number, data: Buffer): void {
+        let  dsa = uId.toString();
+        let  jjhj = passwdBuf.toString();
+
         serial.writeLine(blockN.toString());
-        serial.writeLine(uId.toString());
-        serial.writeLine(passwdBuf.toString());
+        serial.writeLine(dsa);
+        serial.writeLine(jjhj);
+
         if (!passwdCheck(blockN, uId, passwdBuf))
             return;
         let cmdWrite: number[] = [0x00, 0x00, 0xff, 0x15, 0xEB, 0xD4, 0x40, 0x01, 0xA0,
