@@ -328,6 +328,13 @@ namespace NFC {
         buf = [0x00, 0x00, 0xFF, 0x04, 0xFC, 0xD4, 0x4A, 0x01, 0x00, 0xE1, 0x00];
         let cmdUid = pins.createBufferFromArray(buf);
         writeAndReadBuf(cmdUid, 24);
+
+        let recvBufid = "";
+        for (let i = 0; i < 24; i++) {
+            recvBufid += numberToString(recvBuf[i]);
+        }
+        serial.writeLine(recvBufid);
+
         for (let i = 0; i < 4; i++) {
             if (recvAck[1 + i] != ackBuf[i]) {
                 return false;
@@ -337,7 +344,7 @@ namespace NFC {
             return false;
         }
         for (let i = 0; i < uId.length; i++) {
-            uId[i] = recvBuf[19 + i];
+            uId[i] = recvBuf[14 + i];
         }
         if (uId[0] === uId[1] && uId[1] === uId[2] && uId[2] === uId[3] && uId[3] === 0xFF) {
             return false;
